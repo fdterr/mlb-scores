@@ -16,7 +16,7 @@ function App() {
   const fetchGames = async (date: Date) => {
     setIsLoading(true)
     try {
-      const formattedDate = date.toISOString().split('T')[0]
+      const formattedDate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
       const response = await fetch(`https://statsapi.mlb.com/api/v1/schedule?sportId=1&date=${formattedDate}&hydrate=linescore`)
       const data = await response.json()
       setGames(data.dates[0]?.games || [])
